@@ -1,5 +1,73 @@
 <app-public-layout>
-  <section class="login-placeholder">
-    <p>login works!</p>
+  <section class="login">
+    <div class="login__intro">
+      <div class="login__badge">🏢</div>
+      <p class="login__welcome">Bienvenido</p>
+      <h1 class="login__title">Inicia sesión en tu cuenta</h1>
+    </div>
+
+    <article class="login-card">
+      <h2>Iniciar Sesión</h2>
+      <p>Accede a tu panel de proyectos</p>
+
+      <div class="role-selector">
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'user' }"
+          (click)="selectRole('user')"
+        >
+          User
+        </button>
+
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'admin' }"
+          (click)="selectRole('admin')"
+        >
+          Admin
+        </button>
+
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'architect' }"
+          (click)="selectRole('architect')"
+        >
+          Arquitecto
+        </button>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+        <label>
+          <span>Correo Electrónico</span>
+          <input type="email" formControlName="email" placeholder="tu@email.com" />
+        </label>
+
+        <label>
+          <div class="label-row">
+            <span>Contraseña</span>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+        </label>
+
+        <label class="remember">
+          <input type="checkbox" formControlName="rememberMe" />
+          <span>Recordarme</span>
+        </label>
+
+        <button type="submit" class="submit-btn">Iniciar Sesión</button>
+      </form>
+
+      <div class="divider">
+        <span>o</span>
+      </div>
+
+      <p class="register-link">
+        ¿No tienes una cuenta? <a href="#">Crear cuenta</a>
+      </p>
+    </article>
   </section>
 </app-public-layout>

@@ -1,5 +1,160 @@
-.login-placeholder {
+.login {
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
+}
+
+.login__intro {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.login__badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-dark);
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.login__welcome {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.login__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.login-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.login-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.login-card p {
+  margin-top: 0;
+  font-size: 0.9rem;
+}
+
+.role-selector {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.role-btn {
+  min-height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.role-btn--active {
+  border-color: var(--color-text);
+  background: #f4f4f4;
+  font-weight: 600;
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-form label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.login-form input[type='email'],
+.login-form input[type='password'] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #f7f7f7;
+  outline: none;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.label-row a {
+  font-size: 0.8rem;
+}
+
+.remember {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-btn {
+  min-height: 46px;
+  border: none;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+}
+
+.divider {
+  position: relative;
+  margin: 1.25rem 0;
+  text-align: center;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.divider span {
+  position: relative;
+  padding: 0 0.75rem;
+  background: #fff;
+}
+
+.register-link {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.register-link a {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .role-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .login-card {
+    padding: 1.5rem;
+  }
 }
