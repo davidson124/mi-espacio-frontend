@@ -39,10 +39,34 @@
         </button>
       </div>
 
-      <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="login-form" novalidate>
         <label>
           <span>Correo Electrónico</span>
-          <input type="email" formControlName="email" placeholder="tu@email.com" />
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="tu@email.com"
+            [ngClass]="{
+              'input-error': emailInvalid,
+              'input-success': emailValid
+            }"
+          />
+
+          @if (emailInvalid) {
+            <small class="field-message error">
+              @if (emailControl?.errors?.['required']) {
+                El correo es obligatorio.
+              } @else if (emailControl?.errors?.['email']) {
+                Ingresa un correo válido.
+              }
+            </small>
+          }
+
+          @if (emailValid) {
+            <small class="field-message success">
+              Correo válido.
+            </small>
+          }
         </label>
 
         <label>
@@ -50,7 +74,32 @@
             <span>Contraseña</span>
             <a href="#">¿Olvidaste tu contraseña?</a>
           </div>
-          <input type="password" formControlName="password" placeholder="••••••••" />
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+            [ngClass]="{
+              'input-error': passwordInvalid,
+              'input-success': passwordValid
+            }"
+          />
+
+          @if (passwordInvalid) {
+            <small class="field-message error">
+              @if (passwordControl?.errors?.['required']) {
+                La contraseña es obligatoria.
+              } @else if (passwordControl?.errors?.['minlength']) {
+                Debe tener al menos 6 caracteres.
+              }
+            </small>
+          }
+
+          @if (passwordValid) {
+            <small class="field-message success">
+              Contraseña válida.
+            </small>
+          }
         </label>
 
         <label class="remember">
@@ -58,7 +107,25 @@
           <span>Recordarme</span>
         </label>
 
-        <button type="submit" class="submit-btn">Iniciar Sesión</button>
+        @if (errorMessage) {
+          <div class="alert alert--error">
+            {{ errorMessage }}
+          </div>
+        }
+
+        @if (successMessage) {
+          <div class="alert alert--success">
+            {{ successMessage }}
+          </div>
+        }
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="isSubmitting"
+        >
+          {{ isSubmitting ? 'Validando...' : 'Iniciar Sesión' }}
+        </button>
       </form>
 
       <div class="divider">

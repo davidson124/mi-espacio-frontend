@@ -84,15 +84,51 @@
 
 .login-form input[type='email'],
 .login-form input[type='password'] {
-  width: 100%;
+  width: 90%;
   min-height: 44px;
-  padding: 0.75rem 0.9rem;
+  padding: 0rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
   background: #f7f7f7;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.login-form input[type='email']:focus,
+.login-form input[type='password']:focus {
+  border-color: var(--color-muted);
+}
+
+.input-error {
+  border: #ff1d1d 1px solid!important;
+  background: #ffe0e0 !important;
+}
+.input-success {
+  border: #2e7d32 1px solid !important;
+  background: #f3fff3 !important;
+}
+.field-message {
+  font-size: 0.8rem;
+  margin-top: -0.15rem;
+}
+.field-message.error {
+  color: #2e7d32;
+}
+.alert {
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+.alert--error {
+  background: #fff1f1;
+  border: 1px solid #a12626;
+  color: #a12626;
+}
+.alert--success {
+  background: #f1fff3;
+  border: 1px solid #b7d9bb;
+  color: #256b2c;
+}
 .label-row {
   display: flex;
   align-items: center;
@@ -117,6 +153,11 @@
   background: #111;
   color: #fff;
   font-weight: 600;
+  cursor: pointer;
+}
+.submit-btn:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .divider {
