@@ -115,15 +115,18 @@
   color: #2e7d32;
 }
 .alert {
+  margin: 0.5rem 0 0.75rem;
   padding: 0.85rem 1rem;
   border-radius: 10px;
   font-size: 0.9rem;
 }
+
 .alert--error {
   background: #fff1f1;
-  border: 1px solid #a12626;
+  border: 1px solid #e0b4b4;
   color: #a12626;
 }
+
 .alert--success {
   background: #f1fff3;
   border: 1px solid #b7d9bb;

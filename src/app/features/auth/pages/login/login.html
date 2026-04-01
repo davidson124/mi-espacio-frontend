@@ -107,17 +107,15 @@
           <span>Recordarme</span>
         </label>
 
-        @if (errorMessage) {
-          <div class="alert alert--error">
-            {{ errorMessage }}
-          </div>
-        }
+        <div *ngIf="errorMessage" class="alert alert--error">
+          {{ errorMessage }}
+        </div>
 
-        @if (successMessage) {
-          <div class="alert alert--success">
-            {{ successMessage }}
-          </div>
-        }
+        <div *ngIf="successMessage" class="alert alert--success">
+          {{ successMessage }}
+        </div>
+        
+        <p *ngIf="errorMessage">{{ errorMessage }}</p>
 
         <button
           type="submit"
