@@ -35,35 +35,27 @@ export class LoginComponent {
       rememberMe: [false]
     });
   }
-
   selectRole(role: 'user' | 'admin' | 'architect') {
     this.selectedRole = role;
   }
-
   get emailControl() {
     return this.form.get('email');
   }
-
   get passwordControl() {
     return this.form.get('password');
   }
-
   get emailInvalid(): boolean {
     return !!this.emailControl?.invalid && !!this.emailControl?.touched;
   }
-
   get passwordInvalid(): boolean {
     return !!this.passwordControl?.invalid && !!this.passwordControl?.touched;
   }
-
   get emailValid(): boolean {
     return !!this.emailControl?.valid && !!this.emailControl?.touched;
   }
-
   get passwordValid(): boolean {
     return !!this.passwordControl?.valid && !!this.passwordControl?.touched;
   }
-
   submit() {
     this.successMessage = '';
     this.errorMessage = '';
@@ -104,18 +96,15 @@ export class LoginComponent {
       }
     });
   }
-
   private redirectByRole(role: 'admin' | 'architect' | 'user') {
     if (role === 'admin') {
       this.router.navigateByUrl('/admin');
       return;
     }
-
     if (role === 'architect') {
       this.router.navigateByUrl('/architect');
       return;
     }
-
     this.router.navigateByUrl('/projects');
   }
 }
