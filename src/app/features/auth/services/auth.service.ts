@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { LoginRequest } from '../interfaces/login-request.interface';
 import { LoginResponse } from '../interfaces/login-response.interface';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,15 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getUser() {
+  getUser(): User | null {
     const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    return user ? JSON.parse(user) as User : null;
   }
 
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+  
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
