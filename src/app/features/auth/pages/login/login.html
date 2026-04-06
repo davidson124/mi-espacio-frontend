@@ -1,0 +1,135 @@
+<app-public-layout>
+  <section class="login">
+    <div class="login__intro">
+      <div class="login__badge">🏢</div>
+      <p class="login__welcome">Bienvenido</p>
+      <h1 class="login__title">Inicia sesión en tu cuenta</h1>
+      <p class="login_test">Accede a tu panel para revisar proyectos, avances y gestión de tu espacio.</p>
+    </div>
+
+    <article class="login-card">
+      <h2>Iniciar Sesión</h2>
+      <p>Accede a tu panel de proyectos</p>
+
+      <div class="role-selector">
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'user' }"
+          (click)="selectRole('user')"
+        >
+          User
+        </button>
+
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'admin' }"
+          (click)="selectRole('admin')"
+        >
+          Admin
+        </button>
+
+        <button
+          type="button"
+          class="role-btn"
+          [ngClass]="{ 'role-btn--active': selectedRole === 'architect' }"
+          (click)="selectRole('architect')"
+        >
+          Arquitecto
+        </button>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="login-form" novalidate>
+        <label class="form-field">
+          <span>Correo Electrónico</span>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="tu@email.com"
+            autocomplete="email"
+            [ngClass]="{
+              'input-error': emailInvalid,
+              'input-success': emailValid
+            }"
+          />
+
+          @if (emailInvalid) {
+            <small class="field-message error">
+              @if (emailControl?.errors?.['required']) {
+                El correo es obligatorio.
+              } @else if (emailControl?.errors?.['email']) {
+                Ingresa un correo válido.
+              }
+            </small>
+          }
+
+          @if (emailValid) {
+            <small class="field-message success">Correo válido.</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <div class="label-row">
+            <span>Contraseña</span>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            [ngClass]="{
+              'input-error': passwordInvalid,
+              'input-success': passwordValid
+            }"
+          />
+
+          @if (passwordInvalid) {
+            <small class="field-message error">
+              @if (passwordControl?.errors?.['required']) {
+                La contraseña es obligatoria.
+              } @else if (passwordControl?.errors?.['minlength']) {
+                Debe tener al menos 6 caracteres.
+              }
+            </small>
+          }
+
+          @if (passwordValid) {
+            <small class="field-message success">Contraseña válida.</small>
+          }
+        </label>
+
+        <label class="remember">
+          <input type="checkbox" formControlName="rememberMe" />
+          <span>Recordarme</span>
+        </label>
+
+        <div *ngIf="errorMessage" class="alert alert--error">
+          {{ errorMessage }}
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert--success">
+          {{ successMessage }}
+        </div>
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="isSubmitting"
+        >
+          {{ isSubmitting ? 'Validando...' : 'Iniciar Sesión' }}
+        </button>
+      </form>
+
+      <div class="divider">
+        <span>o</span>
+      </div>
+
+      <p class="register-link">
+        ¿No tienes una cuenta? <a href="#">Crear cuenta</a>
+      </p>
+    </article>
+  </section>
+</app-public-layout>
