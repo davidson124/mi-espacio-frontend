@@ -4,6 +4,7 @@
       <div class="login__badge">🏢</div>
       <p class="login__welcome">Bienvenido</p>
       <h1 class="login__title">Inicia sesión en tu cuenta</h1>
+      <p class="login_test">Accede a tu panel para revisar proyectos, avances y gestión de tu espacio.</p>
     </div>
 
     <article class="login-card">
@@ -40,12 +41,13 @@
       </div>
 
       <form [formGroup]="form" (ngSubmit)="submit()" class="login-form" novalidate>
-        <label>
+        <label class="form-field">
           <span>Correo Electrónico</span>
           <input
             type="email"
             formControlName="email"
             placeholder="tu@email.com"
+            autocomplete="email"
             [ngClass]="{
               'input-error': emailInvalid,
               'input-success': emailValid
@@ -63,13 +65,11 @@
           }
 
           @if (emailValid) {
-            <small class="field-message success">
-              Correo válido.
-            </small>
+            <small class="field-message success">Correo válido.</small>
           }
         </label>
 
-        <label>
+        <label class="form-field">
           <div class="label-row">
             <span>Contraseña</span>
             <a href="#">¿Olvidaste tu contraseña?</a>
@@ -79,6 +79,7 @@
             type="password"
             formControlName="password"
             placeholder="••••••••"
+            autocomplete="current-password"
             [ngClass]="{
               'input-error': passwordInvalid,
               'input-success': passwordValid
@@ -96,9 +97,7 @@
           }
 
           @if (passwordValid) {
-            <small class="field-message success">
-              Contraseña válida.
-            </small>
+            <small class="field-message success">Contraseña válida.</small>
           }
         </label>
 
@@ -114,8 +113,6 @@
         <div *ngIf="successMessage" class="alert alert--success">
           {{ successMessage }}
         </div>
-        
-        <p *ngIf="errorMessage">{{ errorMessage }}</p>
 
         <button
           type="submit"
