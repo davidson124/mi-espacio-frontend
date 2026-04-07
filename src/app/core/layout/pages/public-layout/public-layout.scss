@@ -4,4 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #f7f7f7;
+}
+@media (min-width: 768px) {
+  .page {
+    padding: 3rem 1.5rem;
+  }
 }

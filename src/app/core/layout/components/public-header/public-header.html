@@ -1,12 +1,17 @@
 <header class="header">
   <div class="container header__inner">
-    <div class="logo">MI ESPACIO</div>
+    <a class="logo" routerLink="/login">
+      <span class="logo__mark">M</span>
+      <span class="logo__text">Mi Espacio</span>
+    </a>
+
     <nav class="nav">
-      <a href="#">Inicio</a>
+      <a routerLink="/login">Inicio</a>
       <a href="#">Obras</a>
       <a href="#">Servicios</a>
       <a href="#">Cotizaciones</a>
     </nav>
-    <button class="login-btn">Iniciar Sesión</button>
+
+    <button class="login-btn" type="button">Iniciar Sesión</button>
   </div>
 </header>

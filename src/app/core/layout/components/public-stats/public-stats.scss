@@ -3,22 +3,31 @@
   color: #fff;
   padding: 2rem 0;
 }
-
 .stats__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+.stat {
   text-align: center;
+  display: grid;
+  gap: 0.35rem;
 }
-
+.stat strong {
+  font-size: 1.35rem;
+}
 .stats span {
-  display: block;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
-
 @media (min-width: 768px) {
+  .stats {
+    padding: 2.5rem 0;
+  }
   .stats__grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .stat strong {
+    font-size: 1.8rem;
   }
 }
